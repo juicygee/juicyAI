@@ -5,10 +5,10 @@ from datetime import datetime
 import os
 from PIL import Image
 
-# --- GOOGLE SHEETS SETUP ---
+# --- GOOGLE SHEETS SETUP USING SECRETS ---
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds_dict = st.secrets["gcp_service_account"]
-creds = ServiceAccountCredentials.from_json_keyfile_dict(dict(creds_dict), scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 sheet = client.open("streamlit_gsform").sheet1
 
